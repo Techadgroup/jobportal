@@ -1,0 +1,100 @@
+
+<body >
+    <section class="tag">
+      TAG JOB PORTAL
+      <img src="assets/taglogo.png" class="logo">
+    </section>
+    <br>
+   <div > 
+    <section class="header1">
+  <header id="navbar">
+    
+    <nav class="navbar-container container">
+      <a href="/" class="home-link" >  <!-- <img src=" assets/backarrow.png" class="logo" style="width: 10%; height: 10%;"> -->
+        Back
+      </a>
+    
+      <div id="navbar-menu" aria-labelledby="navbar-toggle">
+        <ul class="navbar-links">
+          <li class="navbar-item"><a class="navbar-link"   >About</a></li>
+          <li class="navbar-item"><a class="navbar-link"   >Top Jobs</a></li>
+          <li class="navbar-item"><a class="navbar-link" (click)="opencontact(contentcontact)"  >Contact</a></li>
+          <!-- <li class="navbar-item"><a class="navbar-link" (click)="logout()" >Logout</a></li> -->
+    
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </section>
+  </div> 
+
+  <div class="applyform"> 
+
+  <form class="form" >
+    <div class="label3" style="font-weight: bolder;">Please Fill This Form</div>
+    <label class="label3">
+      Full Name:
+      <input type="text" name="fullName" required>
+    </label>
+    <label class="label3" >
+      Email Address:
+      <input type="email" name="email" required>
+    </label>
+    <label class="label3">
+      Phone Number:
+      <input type="tel" name="phone" required>
+    </label>
+    <label class="label3">
+      Education Level:
+      <select name="education" required>
+        <option value="">Please select</option>
+        <option value="high-school">High School</option>
+        <option value="associate">Associate's Degree</option>
+        <option value="bachelor">Bachelor's Degree</option>
+        <option value="master">Master's Degree</option>
+        <option value="doctorate">Doctorate Degree</option>
+      </select>
+    </label>
+    <label class="label3">
+      Previous Experience:
+      <textarea name="experience" rows="4" required></textarea>
+    </label>
+    <label class="label3">
+      Cover Letter:
+      <input type="file" name="coverLetter" required>
+    </label >
+    <button type="submit" class="button2">Submit</button>
+  </form>
+</div>
+</body>
+
+
+
+
+<ng-template #contentcontact let-modal>
+    <div class="signup">
+      <form>
+      <label class="label3" >Get in touch</label>
+     <div class="contact">
+      <textarea   cols="20" rows="10" placeholder="Message"
+        style="height: 300px;"></textarea> 
+        <br>
+        <textarea  value="" id="" cols="20" rows="10" placeholder="Full name"
+        style="height: 50px;"></textarea> 
+        <br>
+        <textarea value="" id="" cols="20" rows="5" placeholder="Email"
+        style="height: 50px;"></textarea> 
+  
+      <button class="button2"  routerLink="/">Send</button>
+      </div>
+    </form>
+    </div>
+  </ng-template>
+  
+
+  <footer>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-dark" href="/">TAG</a>
+    </div>
+  <footer>

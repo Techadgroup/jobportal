@@ -2,8 +2,10 @@
 <body >
   <section class="tag">
     TAG JOB PORTAL
+    <img src="assets/taglogo.png" class="logo">
   </section>
   <br>
+  <div *ngIf="!isLoggedIn">
   <section class="header1">
 <header id="navbar">
   <nav class="navbar-container container">
@@ -16,8 +18,8 @@
         <li class="navbar-item"><a class="navbar-link"   >About</a></li>
         <li class="navbar-item"><a class="navbar-link"   >Top Jobs</a></li>
         <li class="navbar-item"><a class="navbar-link" (click)="opencontact(contentcontact)"  >Contact</a></li>
-        <li class="navbar-item"><a class="navbar-link" (click)="openlogin(contentlogin)"  >Login</a></li>
-        <li class="navbar-item"><a class="navbar-link" (click)="opensignup(contentsignup)" >Registration</a></li>
+        <!-- <li class="navbar-item"><a class="navbar-link" (click)="openlogin(contentlogin)" >Login</a></li> -->
+        <li class="navbar-item"><a class="navbar-link" (click)="opensignup(contentsignup)" >Registration/Login</a></li>
   
       </ul>
     </div>
@@ -33,8 +35,8 @@
   <div class="row">
     <div class="col-md-10">
       <div class="styled-input wide multi">
-        <div class="first-name" id="input-first-name">
-          <select name="department" class = "dep"  id="dep" formControlName="department">
+        <div >
+          <select name="department"   >
             <option value="Select department" selected>Select Department</option>
             <option value="IT" >IT</option>
             <option value="Service">HR/Admin</option>
@@ -43,8 +45,8 @@
         </select>
           
         </div>
-        <div class="last-name" id="input-last-name">
-          <select name="department" class = "dep"  id="dep" formControlName="department">
+        <div class="last-name" >
+          <select name="department" class = "dep"  >
             <option value="Select location" selected>Select location</option>
             <option value="Greater Accra" >Greater Accra</option>
             <option value="Ashanti Region">Ashanti Region</option>
@@ -66,7 +68,7 @@
 
 
 
-<div>
+
 
 
 
@@ -96,11 +98,11 @@
     </mat-card-header>
 
     <mat-card-content>
-   Short description...
+      Responsible for coordinating, planning, and leading computer-related activities in the organization. Help determine the IT needs of the organization and are responsible for implementing computer systems to fulfill the organization's information systems requirements.
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-stroked-button>Read more </button>
+      <button mat-stroked-button><a href="https://www.glassdoor.com/Job-Descriptions/IT-Manager.htm#:~:text=What%20is%20an%20IT%20Manager,the%20organization's%20information%20systems%20requirements.">Read more </a></button>
       <button mat-stroked-button (click)="openapply(contentapply)"> Apply</button>
     </mat-card-actions>
 
@@ -119,53 +121,294 @@
     </mat-card-header>
 
     <mat-card-content>
-   Short description...
+      As a Secretary you will assume the duty of clerical and administrative support in order to optimize workflow procedures in the office.
+      You will assist colleagues and executives by supporting them with planning and distributing information.
     </mat-card-content>
 
     <mat-card-actions align="end">
-      <button mat-stroked-button>Read more </button>
+      <button mat-stroked-button><a href="https://resources.workable.com/secretary-job-description#:~:text=A%20Secretary%20is%20a%20professional,supply%20inventory%20and%20scheduling%20appointments.">Read more</a> </button>
       <button mat-stroked-button (click)="openapply(contentapply)"> Apply</button>
     </mat-card-actions>
 
   
   </mat-card>
 </div>  
+</div>
 
 
-<div>
+
+  
 
  
 
 
-<ng-template #contentapply let-modal> 
-  <label class="label1"> Please sign up or login</label>
-  <input type="button" value="Login" (click)="openlogin(contentlogin)"  />
-  <input type="button" value="Signup" (click)="opensignup(contentsignup)"  />
-</ng-template>
 
 
-<ng-template #contentlogin let-modal>
-  <div class="login">
-    <form>
-      <label class="label1" >Login</label>
-      <input class= "input1" type="text" name="username" placeholder="User name" [(ngModel)]="loginObj.username">
-      <input class= "input1" type="password" name="pswd" placeholder="Password" [(ngModel)]="loginObj.password">
-      <button class="button2" (click)="openapplication(contentapplication)"   routerLink="" >Login</button>
+  <div *ngIf="isLoggedIn">
+    <section class="header1">
+  <header id="navbar">
+    <nav class="navbar-container container">
+      <a href="/" class="home-link">
+        Hello {{this.username}}
+      </a>
+    
+      <div id="navbar-menu" aria-labelledby="navbar-toggle">
+        <ul class="navbar-links">
+          <li class="navbar-item"><a class="navbar-link"   >About</a></li>
+          <li class="navbar-item"><a class="navbar-link"   >Top Jobs</a></li>
+          <li class="navbar-item"><a class="navbar-link" (click)="opencontact(contentcontact)"  >Contact</a></li>
+          <li class="navbar-item"><a class="navbar-link" (click)="logout()" >Logout</a></li>
+          
+    
+        </ul>
+      </div>
+    </nav>
+  </header>
+  </section>
+  <br>
+  <div><h1 class="alljobs">All Jobs</h1></div>
+  <br>
+  <section class="header2">
+  <form   class="form-area">
+    <br>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="styled-input wide multi">
+          <div class="first-name" id="input-first-name">
+            <select name="department" class = "dep"  id="dep" formControlName="department">
+              <option value="Select department" selected>Select Department</option>
+              <option value="IT" >IT</option>
+              <option value="Service">HR/Admin</option>
+              <option value="Service">Operations</option>
+              <option value="Others">Others</option>
+          </select>
+            
+          </div>
+          <div class="last-name" id="input-last-name">
+            <select name="department" class = "dep"  id="dep" formControlName="department">
+              <option value="Select location" selected>Select location</option>
+              <option value="Greater Accra" >Greater Accra</option>
+              <option value="Ashanti Region">Ashanti Region</option>
+              <option value="Western Region">Western Region</option>
+          </select>
+            
+       
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-md-2 no-pad-left-10">
+        <button type="submit" class="searchbutton">SEARCH</button>
+      </div>
+    </div>
+  </form>
+  </section>
+  
+  
+  
+  
+  <div>
+  
+  
+  
+  <!-- <div class="bigcard">
+    <mat-card *ngFor="let jobs of Jobs" class="card">
+       <mat-card-header>
+        <mat-card-title>
+          <h2>{{ jobs.header}}</h2>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        {{ jobs.content}}
+      </mat-card-content>
+    </mat-card> -->
+  
+  
+  
+  
+  
+  <div class="bigcard">
+    <mat-card class="card">
+       <mat-card-header>
+        <mat-card-title>
+          <h2>IT Manager</h2>
+        </mat-card-title>
+       
+      </mat-card-header>
+  
+      <mat-card-content>
+        Responsible for coordinating, planning, and leading computer-related activities in the organization. Help determine the IT needs of the organization and are responsible for implementing computer systems to fulfill the organization's information systems requirements.
+      </mat-card-content>
+  
+      <mat-card-actions align="end">
+        <button mat-stroked-button><a href="https://www.glassdoor.com/Job-Descriptions/IT-Manager.htm#:~:text=What%20is%20an%20IT%20Manager,the%20organization's%20information%20systems%20requirements.">Read more </a></button>
+        <button mat-stroked-button> <a [routerLink]="['/apply']"> Apply</a></button>
+      </mat-card-actions>
+  
+    
+    </mat-card>
+  </div> 
+  
+  
+  <div class="bigcard">
+    <mat-card class="card">
+       <mat-card-header>
+        <mat-card-title>
+          <h2>Secretary</h2>
+        </mat-card-title>
+       
+      </mat-card-header>
+  
+      <mat-card-content>
+        As a Secretary you will assume the duty of clerical and administrative support in order to optimize workflow procedures in the office.
+        You will assist colleagues and executives by supporting them with planning and distributing information.
+      </mat-card-content>
+  
+      <mat-card-actions align="end">
+        <button mat-stroked-button><a href="https://resources.workable.com/secretary-job-description#:~:text=A%20Secretary%20is%20a%20professional,supply%20inventory%20and%20scheduling%20appointments.">Read more</a> </button>
+        <button mat-stroked-button> <a [routerLink]="['/apply']"> Apply</a></button>
+      </mat-card-actions>
+  
+    
+    </mat-card>
+  </div>  
+  
+  
 
-     
-           
+  </div>
+  </div>
+  
+   
+
+
+
+
+ <ng-template #contentapply let-modal> 
+  <!-- <label class="label1"> Please sign up or login</label> -->
+  <div *ngIf="!showSignUp">
+    <h2 class="label1">Login</h2>
+    <form (ngSubmit)="onLogin()">
+      <div class="signup">
+        <div>
+        <label class="label4" for="username">Username:</label>
+        <input class= "input1" type="text" id="username" [(ngModel)]="username" name="username">
+      </div>
+      <div>
+        <label class="label4" for="password">Password:</label>
+        <input class= "input1" type="password" id="password" [(ngModel)]="password" name="password">
+      </div>
+      <button class="button2" type="submit">Login</button>
+      </div>
     </form>
+    <button class="button2" (click)="showSignUp = true">Sign Up</button>
+  </div>
+  <div *ngIf="showSignUp">
+    <h2 class="label1">Sign Up</h2>
+    <form (ngSubmit)="onSignup()">
+      <div class="signup">
+        <div>
+        <label class="label4" for="username">Name:</label>
+        <input class= "input1" type="text" id="name" [(ngModel)]="name" name="username">
+      </div>
+      <div>
+        <label class="label4" for="username">Username:</label>
+        <input class= "input1" type="text" id="username" [(ngModel)]="username" name="username">
+      </div>
+      <div>
+        <label  class="label4" for="email">Email:</label>
+        <input class= "input1" type="email" id="email" [(ngModel)]="email" name="email">
+      </div>
+      <div>
+        <label class="label4" for="password">Password:</label>
+        <input  class= "input1"  id="password" [(ngModel)]="password" name="password">
+      </div>
+      <div>
+        <label class="label4" for="telephone">Telephone:</label>
+        <input  class= "input1" id="telephone" [(ngModel)]="telephone" name="telephone">
+      </div>
+      <div>
+        <label class="label4" for="password">Role:</label>
+        <input  class= "input1"  id="role" [(ngModel)]="role" name="role" value="jobseeker" value="jobseeker" placeholder="jobseeker">
+      </div>
+      <button  class="button2" type="submit">Sign Up</button>
+      </div>
+    </form>
+    <button  class="button2"(click)="showSignUp = false">Login</button>
   </div>
 </ng-template>
 
+
+
 <ng-template #contentsignup let-modal>
-  <div class="signup">
-    <form>
-    <label class="label1" >Sign up</label>
-    <input class= "input1" type="text" name="username" placeholder="User name" [(ngModel)]="signupObj.username">
-    <input class= "input1" type="email" name="email" placeholder="Email" [(ngModel)]="signupObj.email">
-    <input class= "input1" type="password" name="pswd" placeholder="Password" [(ngModel)]="signupObj.password">
-    <button class="button2" href="/" >Sign up</button>
+<div *ngIf="!showSignUp">
+  <h2 class="label1">Login</h2>
+  <form (ngSubmit)="onLogin()">
+    <div class="signup">
+      <div>
+      <label class="label4" for="username">Username:</label>
+      <input class= "input1" type="text" id="username" [(ngModel)]="username" name="username">
+    </div>
+    <div>
+      <label class="label4" for="password">Password:</label>
+      <input class= "input1" type="password" id="password" [(ngModel)]="password" name="password">
+    </div>
+    <button class="button2" type="submit">Login</button>
+    </div>
+  </form>
+  <button class="button2" (click)="showSignUp = true">Sign Up</button>
+</div>
+<div *ngIf="showSignUp">
+  <h2 class="label1">Sign Up</h2>
+  <form (ngSubmit)="onSignup()">
+    <div class="signup">
+      <div>
+      <label class="label4" for="username">Name:</label>
+      <input class= "input1" type="text" id="name" [(ngModel)]="name" name="username">
+    </div>
+    <div>
+      <label class="label4" for="username">Username:</label>
+      <input class= "input1" type="text" id="username" [(ngModel)]="username" name="username">
+    </div>
+    <div>
+      <label  class="label4" for="email">Email:</label>
+      <input class= "input1" type="email" id="email" [(ngModel)]="email" name="email">
+    </div>
+    <div>
+      <label class="label4" for="password">Password:</label>
+      <input  class= "input1"  id="password" [(ngModel)]="password" name="password">
+    </div>
+    <div>
+      <label class="label4" for="telephone">Telephone:</label>
+      <input  class= "input1" id="telephone" [(ngModel)]="telephone" name="telephone">
+    </div>
+    <div>
+      <label class="label4" for="password">Role:</label>
+      <input  class= "input1"  id="role" [(ngModel)]="role" name="role" value="jobseeker" value="jobseeker" placeholder="jobseeker">
+    </div>
+    <button  class="button2" type="submit">Sign Up</button>
+    </div>
+  </form>
+  <button  class="button2"(click)="showSignUp = false">Login</button>
+</div>
+</ng-template>
+
+
+
+
+
+<ng-template #contentsignup let-modal>
+  <div class="signup" >
+    <form [formGroup]="signupObj" >
+    <label class="label1">Sign up</label>
+   <h1 class="label4">User name:</h1>
+  <input class= "input1" type="text" [(ngModel)]="username" placeholder="User name" >
+  <!-- <h1 class="label4" >Name:</h1><input class= "input1" type="text" [(ngModel)]="name" placeholder="Name" > -->
+  <h1 class="label4" >Email:</h1> <input class= "input1" type="email" [(ngModel)]="email" placeholder="Email" >
+  <!-- <h1 class="label4" >Telephone number: </h1><input class= "input1" type="tel" [(ngModel)]="telephone" placeholder="telephone" > -->
+  <h1 class="label4" >Password:</h1> <input class= "input1" type="password" [(ngModel)]="password" placeholder="Password" >
+  <!-- <h1 class="label4" > Role: </h1><input class= "input1"  type="text" [(ngModel)]="role" value="jobseeker" placeholder="jobseeker" value="jobseeker"" > -->
+
+    <button class="button2"  (click)="onSignup()">Sign up</button>
     
   </form>
   </div>
@@ -205,14 +448,14 @@
       <div >
           <label for="firstName" class="col-sm-3 control-label">First name</label>
           <div class="col-sm-9">
-              <input type="text" id="firstName" formControlName="firstName" placeholder="First Name" class="form-control"  autofocus>
+              <input type="text"  placeholder="First Name" class="form-control"  autofocus>
           </div>
       </div>
       <p class="oneandhalf"></p>
       <div class="form-group">
           <label for="lastName" class="col-sm-3 control-label">Last name</label>
           <div class="col-sm-9">
-              <input type="text" id="lastName" formControlName="lastName" placeholder="Last name" class="form-control">
+              <input type="text"  placeholder="Last name" class="form-control">
           </div>
       </div>
       <p class="oneandhalf"></p>
@@ -226,7 +469,7 @@
       <div class="form-group">
           <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
           <div class="col-sm-9">
-              <input type="phoneNumber" id="phoneNumber" formControlName="mobile" placeholder="Phone number" class="form-control">
+              <input type="phoneNumber"  placeholder="Phone number" class="form-control">
           </div>
       </div>
       <p class="oneandhalf"></p>
@@ -236,12 +479,12 @@
             <div class="row">
                 <div class="col-sm-4">
                     <label class="radio-inline">
-                        <input type="radio"  id="singleRadio" formControlName="maritalStatus" name="maritalStatus" value="Female" >Single
+                        <input type="radio" name="maritalStatus" value="Female" >Single
                     </label>
                 </div>
                 <div class="col-sm-4">
                     <label class="radio-inline">
-                        <input type="radio" id="marriedRadio" name="maritalStatus" formControlName="maritalStatus" value="Male" checked>Married
+                        <input type="radio"  name="maritalStatus"  value="Male" checked>Married
                     </label>
                 </div>
             </div>
@@ -253,7 +496,7 @@
       <div class="form-group">
           <label for="exp" class="col-sm-3 control-label">Experience </label>
           <div class="col-sm-9">
-              <input type="number" id="exp" formControlName="experience" placeholder=" In Years" class="form-control">
+              <input type="number"  placeholder=" In Years" class="form-control">
           </div>
       </div>
       <p class="oneandhalf"></p>
@@ -263,12 +506,12 @@
               <div class="row">
                   <div class="col-sm-4">
                       <label class="radio-inline">
-                          <input type="radio"  id="singleRadio" formControlName="maritalStatus" name="maritalStatus" value="Single" >Single
+                          <input type="radio"  name="maritalStatus" value="Single" >Single
                       </label>
                   </div>
                   <div class="col-sm-4">
                       <label class="radio-inline">
-                          <input type="radio" id="marriedRadio" name="maritalStatus" formControlName="maritalStatus" value="Married" checked>Married
+                          <input type="radio"  name="maritalStatus"  value="Married" checked>Married
                       </label>
                   </div>
               </div>
@@ -278,28 +521,28 @@
       <div class="form-group">
           <label for="nationality" class="col-sm-3 control-label">Nationality</label>
           <div class="col-sm-9">
-              <input type="text" id="nationality" formControlName="nationality"  class="form-control"   >
+              <input type="text" id="nationality" class="form-control"   >
           </div>
       </div>
       <p class="oneandhalf"></p>
       <div class="form-group">
           <label for="clocation" class="col-sm-3 control-label">Current Location</label>
           <div class="col-sm-9">
-              <input type="text" id="location" formControlName="currentLocation" placeholder="Current Location" class="form-control" >
+              <input type="text" id="location" placeholder="Current Location" class="form-control" >
           </div>
       </div>
       <p class="oneandhalf"></p>
       <div class="form-group">
-          <label for="lastexp" class="col-sm-3 control-label">Last Job Experience </label>
+          <label  class="col-sm-3 control-label">Last Job Experience </label>
           <div class="col-sm-9">
-              <input type="number" id="lastexp" formControlName="lastjobexp" placeholder="Last Job Exp. In Years" class="form-control">
+              <input type="number"  placeholder="Last Job Exp. In Years" class="form-control">
           </div>
       </div>
   
       <p class="oneandhalf"></p>
       <div class="form-group">
           <label class="col-sm-3 control-label">Select Department</label>
-          <select name="department" id="dep" formControlName="department">
+          <select name="department" id="dep" >
               <option value="IT" selected>IT</option>
               <option value="Service">HR/Admin</option>
               <option value="Service">Operations</option>
@@ -314,11 +557,10 @@
       </div>
      <div>
       <p class="oneandhalf"></p>
-      <button class="button" type="submit" (click)="onSubmit()">Submit</button>
+      
 
       </div>
 </form>
 </div>
 </ng-template>
-</div>
-</div>
+

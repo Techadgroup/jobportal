@@ -1,5 +1,5 @@
 
-  .container {
+.container {
     max-width: 1000px;
     padding-left: 1.4rem;
     padding-right: 1.4rem;
@@ -398,4 +398,13 @@ height: 100px;
 
 .tag{
   height: 10px;
+}
+
+
+.applyform{
+  margin: auto;
+  width: 80%;
+  border: 3px solid white;
+  padding: 10px;
+  
 }

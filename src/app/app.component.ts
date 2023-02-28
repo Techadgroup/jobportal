@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import  JobsJson from  './jobs.json' 
+
 
 
 interface JOBS{

@@ -3,19 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgChartsModule } from 'ng2-charts';
-
 import { NgMaterialModule } from './ng-material/ng-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ApplicationComponent } from './dashboard/application/application.component';
+
+
+
 
 
 
@@ -24,10 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     DashboardComponent,
-
-
-
-   
+    ApplicationComponent,
 
   ],
   imports: [
@@ -41,6 +38,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgMaterialModule,
    
 
+  ],
+
+  exports:[
+    DashboardComponent,
   ],
 
   
